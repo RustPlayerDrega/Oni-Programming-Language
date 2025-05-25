@@ -208,7 +208,7 @@ Use this document to track every planned milestone.
 
 ### Unified `.uof` Files
 - [ ] Multi-language, multi-target hybrid format  
-- [ ] Syntax: `[language=backend=filename]`  
+- [ ] Syntax: `[language=backend=filename]`  `[language=filename]`  
   - Example: `[oni=rust=engine]`, `[css=styles]`, `[html=index]`, `[sql=data]`  
 - [ ] `[EndOfFile]` marks the end of each section  
 - [ ] Compiler extracts and builds files per section  
