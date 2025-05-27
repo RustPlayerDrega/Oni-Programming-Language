@@ -43,12 +43,13 @@ Oni is a statically-typed, high-performance, multi-paradigm systems programming 
 
 ## Core Philosophy
 
-Oni is driven by four guiding principles:
+Oni is driven by Five guiding principles:
 
 - **Safety**
 - **Versatility**
 - **Speed**
 - **Readability**
+- **1 = 1 compatibility with Rust**
 
 ---
 
