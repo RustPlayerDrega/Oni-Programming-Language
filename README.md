@@ -58,15 +58,7 @@
 
 * **OASM DSL for Assembly**
   Oni uses **OASM**, a minimalistic DSL that feels like Oni syntax but compiles to inline assembly in the Rust backend.
-
-  * Write simple Oni-like code:
-
-    ```oni
-    oasm:
-      mov rax, rbx      # high-level Oni syntax
-      add rax, rcx
-    end
-    ```
+  * Write simple Oni-like code
   * On compilation, emits `asm!` blocks in generated Rust source, with safe scoping and sandboxing.
 
 * **Integrated Toolchain**
