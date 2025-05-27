@@ -44,7 +44,8 @@ Use this document to track every planned milestone.
 - [ ] Unsigned: `u8`, `u16`, `u32`, `u64`, `u128`  
 - [ ] Literal suffix support & type inference  
 - [ ] Overflow/underflow checking (debug)  
-- [ ] Safe casting utilities  
+- [ ] Safe casting utilities
+- [ ] Auto Minimum Types of int, uint, float, ufloat 
 
 ---
 
