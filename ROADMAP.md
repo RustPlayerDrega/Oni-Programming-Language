@@ -4,7 +4,7 @@ Use this document to track every planned milestone.
 
 ---
 
-## 0. Basic Language Features (Rust / Kotlin Native / Swift / TypeScript / Zig / Lua parity)
+## 0. Basic Language Features (Rust/Kotlin Native/Swift/Nim Parity)
 
 ### Language Core
 - [ ] `let`, `const`, `mut`, `var` declarations  
@@ -14,10 +14,15 @@ Use this document to track every planned milestone.
 - [ ] Modules and imports  
 - [ ] Tuples, records, enums, union types  
 - [ ] Generics and type parameters  
-- [ ] Traits / interfaces  
-- [ ] Error handling (`try`/`catch`/`throw`, `Result`, `Option`)  
+- [ ] Traits/interfaces  
+- [ ] **Error Handling**  
+  - [ ] `result T,E` for recoverable errors  
+  - [ ] `option T` for explicit optional values  
+  - [ ] `panic!` for unrecoverable errors  
 - [ ] Type inference  
-- [ ] Nullable / non-nullable types  
+- [ ] **Non-nullable by default**  
+  - [ ] All types `T` guarantee valid values  
+  - [ ] `option T` required for optional/missing values  
 - [ ] Compile-time evaluated constants  
 
 ---
@@ -25,16 +30,16 @@ Use this document to track every planned milestone.
 ## 1. String & Numeric Type System
 
 ### String Types
-- [ ] `str`   → Rust `String`  
-- [ ] `stref`    → `&str`  
-- [ ] `ostr`     → `OsString`  
-- [ ] `cstr`     → `CString`  
-- [ ] `vbstr`    → `Vec<u8>`  
-- [ ] `bstr`     → `&[u8]`  
-- [ ] Conversions / encoding helpers (UTF-8, Base64, Hex)  
+- [ ] `str` → Owned string (non-null)  
+- [ ] `stref` → String slice (non-null)  
+- [ ] `ostr` → `OsString` equivalent  
+- [ ] `cstr` → C-compatible (`option cstr`)  
+- [ ] `vbstr` → `Vec<u8>` equivalent  
+- [ ] `bstr` → `&[u8]` equivalent  
+- [ ] Conversions/encoding helpers (UTF-8, Base64, Hex)  
 - [ ] C-FFI-safe string handling  
 
-### Integer Types
+### Numeric Types
 - [ ] Signed: `i8`, `i16`, `i32`, `i64`, `i128`  
 - [ ] Unsigned: `u8`, `u16`, `u32`, `u64`, `u128`  
 - [ ] Literal suffix support & type inference  
@@ -46,9 +51,8 @@ Use this document to track every planned milestone.
 ## 2. Memory Management
 
 - [ ] Manual memory (ownership & borrowing) – Rust backend  
-- [ ] AOB GC – Automatic Ownership & Borrowing (Rust backend)  
-- [ ] ARC GC – Kotlin Native / Swift backends  
-- [ ] ORC GC – TypeScript / Lua backends  
+- [ ] ARC GC – Kotlin Native/Swift/Nim backends  
+- [ ] ORC GC – Nim backend  
 - [ ] Interop between GC and manual modes  
 - [ ] Lifetime analysis & leak detection tools  
 
@@ -57,184 +61,220 @@ Use this document to track every planned milestone.
 ## 3. Metaprogramming System
 
 - [ ] Rust-style procedural macros  
-- [ ] Nim-style `macro` / `template` blocks  
+- [ ] Nim-style `macro`/`template` blocks  
 - [ ] Lisp-style symbolic macros (code-as-data)  
 - [ ] Racket-style hygienic macros & scope control  
 - [ ] CTFE (compile-time function execution)  
-- [ ] Compile-time reflection / codegen  
+- [ ] Compile-time reflection/codegen  
 - [ ] DSL authoring helpers  
 
 ---
 
 ## 4. Concurrency & Parallelism
 
-- [ ] Async / await  
+- [ ] Async/await  
 - [ ] Goroutines  
 - [ ] Channels  
-- [ ] Actor model (elixir/Pony-like)  
+- [ ] **Actor Model (BEAM/OTP-inspired)**  
+  - [ ] Supervisor trees (hierarchical supervision)  
+  - [ ] Self-healing mechanisms (auto-restarts)  
+  - [ ] Lightweight processes (millions of actors)  
+  - [ ] Distributed process registry  
+  - [ ] Hot code reloading  
+  - [ ] "Let it crash" philosophy  
 - [ ] Threading primitives (Nim-style threads, mutex, condvar)  
 - [ ] Fork-join parallelism  
 - [ ] Task parallelism  
 - [ ] Data parallelism  
 - [ ] Pipeline parallelism  
-- [ ] SIMD parallelism / vector ops  
+- [ ] SIMD parallelism/vector ops  
 - [ ] Thread-local storage & atomics  
 
 ---
 
-## 5. Backends
+## 5. Logic Programming
 
-- [ ] Rust (manual + AOB)  
-- [ ] Kotlin Native  
-- [ ] Swift  
-- [ ] TypeScript  
-- [ ] Lua  
-- [ ] Zig  
-- [ ] Cross-platform build orchestration  
+- [ ] `fact` & `rule` declarations  
+- [ ] Query syntax (`?- predicate(args)`)  
+- [ ] Unification & backtracking with continuations  
+- [ ] Clause indexing for fast lookup  
+
+---
+
+## 6. Dataflow/Flow-Based Programming
+
+- [ ] Wire connectors/pipe syntax (`|>`)  
+- [ ] Static DAG analysis & scheduling  
+- [ ] Monitoring/diagnostics of nodes  
+- [ ] Back-pressure/flow control  
+
+---
+
+## 7. Event-Driven Programming
+
+- [ ] Signals/`event` definitions & `emit`  
+- [ ] Event loop/dispatcher  
+- [ ] Event queue with priorities  
+- [ ] Asynchronous handler dispatch  
+- [ ] Subscription registry & cancellation tokens  
+
+---
+
+## 8. Functional Reactive Programming (FRP)
+
+- [ ] Change-propagation engine for signals/behaviors  
+- [ ] Time primitives (`.at`, `.every`, `.delay`)  
+- [ ] Batching/coalescing updates  
+
+---
+
+## 9. Security Standard Library
+
+- [ ] `obfuscate key="..."` (compile-time obfuscation)  
+- [ ] `encrypt` (compile-time encryption)  
+- [ ] `seal` (anti-reflection protection)  
+- [ ] `audit` (integrity checks)  
+- [ ] `public` keyword (private by default, explicit exposure)  
+
+---
+
+## 10. OASM DSL for Inline Assembly
+
+- [ ] `oasm … end` inline blocks  
+- [ ] Architecture support (x86_64, ARM, RISC-V)  
+- [ ] Register binding & memory access  
+- [ ] Clobber lists & constraints  
+- [ ] VM fallback mechanism  
+
+---
+
+## 11. Julia-like Math Syntax
+
+- [ ] Infix/vector operators (`*`, `.+`, `.-`)  
+- [ ] Broadcasting (`fn.(args)`)  
+- [ ] Unicode operators (`∀`, `∑`)  
+- [ ] Native arrays/tensors  
+
+---
+
+## 12. Backends
+
+- [ ] Rust (manual memory)  
+- [ ] Kotlin Native (ARC)  
+- [ ] Swift (ARC)  
+- [ ] Nim (ORC)  
+- [ ] WASM  
+- [ ] Machine Code  
+- [ ] Cross-platform builds  
 - [ ] Backend-specific optimizations  
-- [ ] FFI layer for each backend  
+- [ ] FFI layers per backend  
 
 ---
 
-## 6. Akuma Toolchain
+## 13. Kami Toolchain
 
-- [ ] Interpreter for rapid prototyping  
+- [ ] Interpreter  
 - [ ] Optimizing compiler  
-- [ ] Build system (multi-backend)  
-- [ ] Package manager & dependency resolver  
-- [ ] Test runner / coverage  
+- [ ] Multi-backend build system  
+- [ ] Package manager (`appshard + delta`)  
+- [ ] Test runner/coverage  
 - [ ] Hot code reloading  
-- [ ] Optional Akuma VM / runtime  
-  - [ ] Concurrency scheduler  
-  - [ ] Runtime GC for actors/goroutines  
-  - [ ] Lightweight process isolation  
+- [ ] **Kami VM**  
+  - [ ] BEAM-style scheduler  
+  - [ ] Runtime GC modes  
+  - [ ] Process isolation  
+  - [ ] Distributed messaging  
 
 ---
 
-## 7. Onikage Developer Tools
+## 14. Onikage Developer Tools
 
-- [ ] Language Server Protocol (LSP) server  
-- [ ] Syntax highlighting & code formatting  
-- [ ] Autocompletion and navigation  
-- [ ] Type checking & diagnostics  
-- [ ] Static analysis & linting  
-- [ ] Documentation generator  
-- [ ] REPL / interactive debugger  
+- [ ] LSP server  
+- [ ] Syntax highlighting  
+- [ ] Auto-completion  
 - [ ] Security scanner  
-- [ ] IDE plugins (VS Code, Neovim, JetBrains, etc.)  
+- [ ] REPL/debugger  
+- [ ] IDE plugins (VS Code, Neovim, JetBrains)  
 
 ---
 
-## 8. Interoperability
+## 15. Interoperability
 
 - [ ] Rust crate linking  
-- [ ] Zig / C interop  
-- [ ] Lua embedding  
-- [ ] Swift / Kotlin FFI  
-- [ ] JS / TypeScript glue  
-- [ ] WebAssembly output  
-- [ ] Inline foreign code sections  
+- [ ] C FFI (`option Ptr<T>`)  
+- [ ] WASM exports  
+- [ ] Multi-language `.uof` files  
 
 ---
 
-## 9. Documentation & Learning
+## 16. Documentation & Learning
 
-- [ ] Formal language reference  
-- [ ] “The Oni Book” introductory guide  
-- [ ] Example & snippet repository  
-- [ ] Online playground / web REPL  
-- [ ] Migration guides
-
----
-
-## 10. Ecosystem Infrastructure
-
-- [ ] Standard library (pure Oni)  
-- [ ] Utility crates (collections, math, I/O, async, net)  
-- [ ] Public package registry & semver  
-- [ ] Plugin system for Akuma / Onikage  
-- [ ] Contribution & governance docs  
+- [ ] Language reference  
+- [ ] "The Oni Book" guide  
+- [ ] Example repository  
+- [ ] Web playground/REPL  
+- [ ] Migration guides  
 
 ---
 
-## 11. Advanced Features
+## 17. Ecosystem Infrastructure
 
-- [ ] Modular architecture facilities  
-- [ ] Optional runtime reflection  
-- [ ] Sandboxing / embedded mode  
-- [ ] Embedded-system support (via Zig/Rust)  
-- [ ] Debugger & profiler  
-- [ ] Cross-compilation pipeline  
-- [ ] Binary size optimizations  
-- [ ] Security-hardened memory / thread model  
+- [ ] Standard library  
+- [ ] Utility crates (collections, math, I/O)  
+- [ ] Package registry  
+- [ ] Plugin system  
+- [ ] Contribution docs  
 
 ---
 
-## 12. Object-Oriented Programming (OOP) Models
+## 18. Advanced Features
+
+- [ ] Modular architecture  
+- [ ] Runtime reflection  
+- [ ] Embedded sandboxing  
+- [ ] Cross-compilation  
+- [ ] Binary optimization  
+
+---
+
+## 19. OOP Models
 
 - [ ] Structs with methods  
-- [ ] Traits / interfaces for polymorphism  
-- [ ] Trait objects (`dyn Trait`)  
-- [ ] Extension methods & default impls  
-- [ ] Implicit interface satisfaction (Go-style)  
-- [ ] Optional class syntax  
-- [ ] Inheritance & constructors (Kotlin-like)  
-- [ ] Lua-style prototypes & metatables  
-- [ ] Method overloading / overriding  
-- [ ] Nullable vs non-nullable OOP types  
-- [ ] Mixins & interface extension  
-- [ ] Decorators / annotations  
-- [ ] Abstract classes & members    
+- [ ] Traits/interface polymorphism  
+- [ ] Kotlin-like inheritance  
+- [ ] Lua-style prototypes  
+- [ ] Mixins/decorators  
 
 ---
 
-## 13. Source File Formats
+## 20. Source File Formats
 
-### Standard `.oni` Files
-- [ ] `.oni` files support Oni code only  
-- [ ] Compiler parses and compiles `.oni` to all enabled backends:  
-  - Rust  
-  - TypeScript  
-  - Swift  
-  - Kotlin Native  
-  - Lua  
-  - Zig  
-  - WASM  
-  - Machine Code  
-- [ ] Output generated files to same directory  
-- [ ] Source maps for debugging and error tracking  
-- [ ] Backend-specific code filtering using inline tags or compiler directives  
-- [ ] Linting, formatting, REPL, and diagnostics via Onikage  
+### `.oni` Files
+- [ ] Pure Oni code  
+- [ ] Multi-backend compilation  
 
-### Unified `.uof` Files
-- [ ] Multi-language, multi-target hybrid format  
-- [ ] Syntax: `[language=backend=filename]`  `[language=filename]`  
-  - Example: `[oni=rust=engine]`, `[css=styles]`, `[html=index]`, `[sql=data]`  
-- [ ] `[EndOfFile]` marks the end of each section  
-- [ ] Compiler extracts and builds files per section  
-- [ ] Oni section supports same backend targeting as `.oni` files  
-- [ ] Compiler generates `.rs`, `.ts`, `.swift`, `.kt`, `.lua`, `.zig`, `.wasm`, `.html`, `.css`, `.sql` files  
-- [ ] Output generated files into same directory as `.uof`  
-- [ ] Compiler diagnostics mapped back to `.uof` lines  
-- [ ] Onikage support:  
-  - Linting `.uof` files  
-  - Multi-language syntax highlighting  
-  - Code folding per section  
-  - Section-scoped REPL / tests  
-  - Unified formatter  
+### `.uof` Files
+- [ ] Multi-language support  
+- [ ] `[language=backend=filename]` syntax  
+- [ ] Section-based processing  
 
 ---
 
-## 14. Inline Assembly Support
+## Milestones
 
-- [ ] `asm` block for inline assembly (Rust/Zig-like)  
-- [ ] Architecture-specific backends (x86_64, ARM, RISC-V, etc.)  
-- [ ] Backend support for:
-  - Rust (via `asm!`)
-  - Zig (via native `asm`)  
-- [ ] C-style inline assembly support where applicable  
-- [ ] Register binding, memory access & clobber syntax  
-- [ ] Safe escape hatches & memory sandboxing  
-- [ ] Tooling support (Onikage: syntax highlighting, formatter)  
-- [ ] Compilation diagnostics and VM fallback when unavailable  
+### Milestone 1 – MVP
+- [ ] Core language implementation  
+- [ ] Rust backend  
+- [ ] Basic toolchain  
 
+### Milestone 2 – Extended Capabilities
+- [ ] BEAM-style concurrency  
+- [ ] Security features  
+- [ ] Multi-backend support  
+
+### Milestone 3 – Production Ready
+- [ ] Certified toolchain  
+- [ ] Enterprise features  
+- [ ] Ecosystem maturity  
+
+---
