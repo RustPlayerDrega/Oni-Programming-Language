@@ -26,6 +26,7 @@ Oni is a statically-typed, high-performance, multi-paradigm systems programming 
   - [Security Standard Library](#security-standard-library)
   - [OASM DSL for Inline Assembly](#oasm-dsl-for-inline-assembly)
   - [Julia-like Math Syntax](#julia-like-math-syntax)
+- [Supported Programming Paradigms](#supported-programming-paradigms)
 - [Development Ecosystem](#development-ecosystem)
   - [Multi-Backend Compilation](#multi-backend-compilation)
   - [Kami Toolchain](#kami-toolchain)
@@ -210,6 +211,71 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 - **Unicode**: ∀, ∑, etc.
 - **Arrays/Tensors**: Native linear algebra support
 - **GPU Offloading**: BLAS/LAPACK integration
+
+## Supported Programming Paradigms in Oni
+
+- **Imperative Programming**
+  - Standard control flow (if, while, for)
+  - Manual memory control (Rust-style)
+
+- **Functional Programming**
+  - First-class functions and closures
+  - Pattern matching
+  - Option/Result types
+  - Immutable by default
+  - Pipe syntax (`|>`)
+
+- **Object-Oriented Programming (OOP)**
+  - Traits/interfaces
+  - Type classes (via traits)
+  - Encapsulation via modules and visibility modifiers
+
+- **Procedural Programming**
+  - Function-centric design
+  - Inline assembly (`oasm` blocks)
+
+- **Logic Programming**
+  - Facts and rules
+  - Declarative query syntax (`?-`)
+  - Backtracking and unification
+
+- **Dataflow Programming**
+  - Flow-based constructs and DAG scheduling
+  - Static and reactive data pipelines
+
+- **Event-Driven Programming**
+  - Signals, event emitters
+  - Asynchronous handlers
+
+- **Actor-Based Concurrency**
+  - Supervision trees
+  - Hot reloading
+  - Isolated actors with message passing
+
+- **Concurrent & Parallel Programming**
+  - Async/await
+  - Goroutines and channels
+  - Task/data/pipeline parallelism
+  - SIMD and fork-join models
+
+- **Metaprogramming**
+  - Symbolic macros (Lisp-style)
+  - Template macros (Nim-style)
+  - Procedural macros (Rust-style)
+  - Compile-time reflection and execution (CTFE)
+
+- **Reactive Programming**
+  - Signals and behaviors
+  - Time primitives and change propagation
+
+- **Declarative Programming**
+  - Logic clauses and DSL support
+  - Configuration through attributes and annotations
+
+- **Low-Level Systems Programming**
+  - Manual memory with lifetimes
+  - Inline assembly (`oasm`)
+  - Direct hardware control
 
 ## Development Ecosystem
 
