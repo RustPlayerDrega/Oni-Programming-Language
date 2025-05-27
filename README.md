@@ -1,101 +1,281 @@
+```markdown
 # Oni Programming Language
 
-**Oni** is a modular, **statically typed** high-performance, multi-paradigm programming language designed for modern systems and application development. Inspired by the safety of **Rust**, the clarity of **Nim**, the concurrency power of **Go** and **Pony**, and the scientific programming ergonomics of **Julia**, Oni is built for **productivity, safety, versatility, and scalability** across platforms.
+Oni is a statically-typed, high-performance, multi-paradigm systems programming language designed to meet the needs of modern software development. Drawing inspiration from Rust, Nim, Go, Pony, and Julia, Oni combines productivity, safety, versatility, and scalability to support applications ranging from embedded systems to cloud infrastructure.
 
-> **Write fast. Build safe. Run anywhere.**
+**Write fast. Build safe. Run anywhere.**
+
+---
+
+## Core Philosophy
+
+Oni is driven by four guiding principles:
+
+- **Safety**
+- **Versatility**
+- **Speed**
+- **Readability**
+
+---
+
+## Safety by Design
+
+- Null-safe type system with explicit `option T` handling
+- Hybrid memory management (ownership/GC) with leak detection
+- Compile-time security validation and cryptographic verification
+- Security-focused specialized standard library
+- Zero-trust protocol implementation
+- Modularity and isolation mechanisms
+
+---
+
+## Universal Programming
+
+- **One Language for All**: Covers 95% of programming use cases, minimizing the need for multiple languages.
+- **Seamless Workflow**: Smooth transitions from prototyping to production within a single environment.
+- **Accessible Learning**: Balances simplicity for beginners with depth for advanced users across diverse domains.
+
+---
+
+## Safety First
+
+- **Null Safety**: Employs option types to eliminate null pointer errors.
+- **Memory Safety**: Uses ownership models and garbage collection to prevent memory bugs at compile time.
+- **Security by Design**: Enforces compile-time checks to catch vulnerabilities early.
+- Compile-time code obfuscation
+- Anti-reflection protection
+- Tamper-evident audit trails
+- Encrypted constant storage
+- Cryptographic package verification
 
 ---
 
 ## Key Features
 
-* **Modern Memory Management**
+Oni provides a rich set of features tailored for a broad range of programming tasks:
 
-  * **Manual mode**: Rust-style ownership and borrowing (Rust backend only)
+### Basic Language Features
 
-  * **ARC/ORC GC**: For Kotlin, Swift, and Nim backends
+- **Declarations**: `let`, `const`, `mut`, `var`
+- **Functions**: Supports closures and first-class functions
+- **Control Flow**: `if`, `else`, `match`, `case`, `while`, `for`
+- **Pattern Matching**: Includes destructuring and exhaustive checks
+- **Modules**: Facilitates imports and code organization
+- **Types**: Offers tuples, records, enums, and unions
+- **Generics**: Provides type parameters and traits/interfaces
+- **Error Handling**: Uses `result T,E`, `option T`, and `panic!`
+- **Type Inference**: Reduces boilerplate code
+- **Non-Nullable by Default**: Requires `option T` for optional values
+- **Compile-Time Constants**: Evaluates constants at compile time
 
-* **Multi-Backend Compilation**
+### String & Numeric Type System
 
-  * **Rust** – Core backend with system-level performance and ability to reverse-compile Rust code to Oni
-  * **Kotlin Native** – Android & cross-platform
-  * **Swift** – iOS/macOS support
-  * **Nim** – Web-ready, scripting and embedded portable systems backend
-  * **WASM**, **Machine Code**
+**String Types:**
 
-* **Powerful Concurrency Models**
+- `str`: Owned, non-null string
+- `stref`: Non-null string slice
+- `ostr`: OS-specific string
+- `cstr`: C-compatible string (`option cstr`)
+- `vbstr`: Vector of bytes
+- `bstr`: Byte slice
+- **Conversions**: UTF-8, Base64, and Hex encoding
 
-  * **Async/Await**
-  * **Goroutines & Channels**
-  * **Actor Model**
-  * **Threading Primitives**:
+**Numeric Types:**
 
-    * Thread creation and management
-    * Thread-safe data structures
-    * Mutexes and condition variables
-  * Optional **Kami VM/Runtime** for scalable concurrency, GC tasks, and hot code reloading (toggleable)
+- **Signed**: `i8`, `i16`, `i32`, `i64`, `i128`
+- **Unsigned**: `u8`, `u16`, `u32`, `u64`, `u128`
+- **Features**: Literal suffixes, type inference, overflow checks (debug mode), safe casting
+- **Auto Minimum Types**: Dynamic numeric wrappers which automatically choose the appropriate numeric type based on required memory, starting from 8 bits and scaling up to 128 bits as needed with uint int ufloat float
 
-* **Parallelism Models**
+### Memory Management
 
-  * **Data Parallelism**: Efficient parallel operations over collections and data streams
-  * **Task Parallelism**: Concurrent execution of independent tasks
-  * **Pipeline Parallelism**: Staged processing with asynchronous pipelines
-  * **Actor-Based Parallelism**: Isolated concurrent actors communicating via message passing
-  * **Fork-Join Parallelism**: Recursive task splitting and joining for divide-and-conquer algorithms
-  * **SIMD Parallelism**: Single Instruction, Multiple Data for vectorized computation and low-level performance
+- **Manual Mode**: Rust-style ownership and borrowing
+  - Ownership/borrowing semantics
+  - Lifetime annotations
+  - Zero-cost abstractions
+- **Automatic Modes:**
+  - **ARC** (Automatic Reference Counting): Used in Kotlin/Swift backends
+  - **ORC** (Optimized Reference Counting): Used in Nim backend
+- **Hybrid Support**: Mixing manual and automatic memory management
+- **Lifetime Tools**: Leak detection and analysis
 
-* **Clean, Nim-like Syntax**
+### Metaprogramming System
 
-  * Minimal boilerplate
-  * Easy to read and write
-  * Powerful meta-programming (Rust, Nim, Lisp, Racket-style)
+- **Procedural Macros**: Rust-inspired
+- **Template Macros**: Nim-style
+- **Symbolic Macros**: Lisp-style code-as-data
+- **Hygienic Macros**: Racket-style scope control
+- **CTFE**: Compile-time function execution
+- **Reflection**: Compile-time code generation
+- **DSL Support**: Tools for domain-specific languages
 
-* **Julia-like Math Syntax**
+### Concurrency
 
-  * Infix operators for matrix math (`*`, `.+`, `.-`, etc.)
-  * Broadcasting with `.` notation (`sin.(x)`)
-  * Unicode operator support (e.g., `∀`, `∑`)
-  * Native support for arrays, tensors, and linear algebra
+- **Async/Await**: For asynchronous programming
+- **Goroutines & Channels**: Go-inspired concurrency
+- **Actor Model**: BEAM/OTP-inspired with supervision trees and hot reloading
+- **Thread Primitives**: Threads, mutexes, condition variables, atomic operations
+- **Parallelism Models**: Fork-join, task, data, pipeline, SIMD
+- **Thread Safety**: Atomics and thread-local storage
+- **Toggleable Kami VM/Runtime**: For scalable concurrency, GC tasks, and hot code reloading
 
-* **OASM DSL for Assembly**
-  Oni uses **OASM**, a minimalistic DSL that feels like Oni syntax but compiles to inline assembly in the Rust backend.
-  * Write simple Oni-like code
-  * On compilation, emits `asm!` blocks in generated Rust source, with safe scoping and sandboxing.
+### Parallelism
 
-* **Integrated Toolchain**
+- **Data Parallelism**: Parallel operations over collections and data streams
+- **Task Parallelism**: Concurrent execution of independent tasks
+- **Pipeline Parallelism**: Staged processing with asynchronous pipelines
+- **Actor-Based Parallelism**: Isolated actors communicating via message passing
+- **Fork-Join Parallelism**: Recursive task splitting and joining
+- **SIMD Parallelism**: Vectorized computation
 
-  * **Kami**: Interpiler (interpreter + compiler),package manager(the package manager will have Delta and parallel downloads and packages are made in appshred format that is made of tiny appshards and akuma will download the shards and combines them together and then installs them as appshred and all appshards will have security signatures and special IDs for recognition), build system, test runner, Toggleable VM/Runtime, Hot Code Reloading, Dependency Management
-  * **Onikage**: IDE bridge with LSP, REPL, linting, type checking, static analysis, documentation generation, security scanning
+### Logic Programming
 
----
+- **Facts & Rules**: Declarative logic definitions
+- **Queries**: `?- predicate(args)` syntax
+- **Unification**: Backtracking with continuations
+- **Clause Indexing**: Optimized lookups
+
+### Dataflow/Flow-Based Programming
+
+- **Pipe Syntax**: `|>` for operation chaining
+- **DAG Analysis**: Static scheduling of data flows
+- **Monitoring**: Diagnostics for flow nodes
+- **Back-Pressure**: Flow control mechanisms
+
+### Event-Driven Programming
+
+- **Signals**: `emit` definitions
+- **Event Loop**: Prioritized dispatcher
+- **Handlers**: Asynchronous subscription registry
+
+### Functional Reactive Programming (FRP)
+
+- **Signals & Behaviors**: Propagates changes
+- **Time Primitives**: `.at`, `.every`, `.delay`
+- **Batching**: Coalesces updates
+
+### Security Standard Library
+
+- **Obfuscation**: `obfuscate key="…"`
+- **Encryption**: `encrypt`
+- **Anti-Reflection**: `seal`
+- **Integrity**: `audit`
+- **Exposure**: `public` keyword (private by default)
+
+### OASM DSL for Inline Assembly
+
+- **Inline Blocks**: `oasm … end`
+- **Architectures**: x86_64, ARM, RISC-V
+- **Registers**: Binding and memory constraints
+- **Fallback**: VM support on unsupported platforms
+- **Assembly Output**: Emits `asm!` blocks in generated Rust source
+
+### Julia-like Math Syntax
+
+- **Operators**: `.*`, `.+`, `.-` for element-wise operations
+- **Broadcasting**: `fn.(args)`
+- **Unicode**: ∀, ∑, etc.
+- **Arrays/Tensors**: Native linear algebra support
+- **GPU Offloading**: BLAS/LAPACK integration
+
+## Development Ecosystem
+
+### Multi-Backend Compilation
+
+| Backend       | Use Case               | Key Strength              |
+|---------------|------------------------|---------------------------|
+| Rust          | Systems programming    | Native performance        |
+| Kotlin        | Android/cross-platform | JVM interoperability      |
+| Swift         | iOS/macOS development  | Apple ecosystem           |
+| Nim           | Web/embedded/scripting | Metaprogramming           |
+| WASM          | Browser-based apps     | Portable execution        |
+| Machine Code  | Bare-metal systems     | Direct hardware control   |
+
+### Kami Toolchain
+
+- **Package Manager**:
+  - Delta updates, parallel shard downloads
+  - Cryptographic signatures, shard verification
+- **Runtime Features**:
+  - Hot-reloading, toggleable BEAM-style VM
+  - Distributed process registry
+- **Build System**:
+  - Multi-backend compilation
+  - Cross-target dependency resolution
+
+### Onikage IDE Suite
+
+- **Security Scanner**: Detects vulnerabilities
+- **Ownership Visualizer**: Memory insights
+- **Multi-backend Debugger**: Supports all backends
+- **AI Completion**: Context-aware suggestions
+- **Docs Generator**: Auto-generates documentation
+- **Extras**: LSP, REPL, linting, static analysis
 
 ## Use Cases
 
-* Systems programming
-* Cross-platform software development
-* Game engines and embedded systems
-* Cloud-native services
-* High-performance libraries
-* Reactive and actor-based concurrent applications
-* Math and numerical computation
+| Domain                | Oni Features Utilized                |
+|-----------------------|--------------------------------------|
+| Systems Programming   | Manual memory, OASM, hardware access |
+| Mobile Development    | Kotlin/Swift backends                |
+| Scientific Computing  | GPU math, tensors, Julia syntax      |
+| Web Services          | WASM, async pipelines                |
+| Embedded Systems      | Nim backend, low footprint           |
+| Cloud Native Apps     | Actor model, Kubernetes compatibility|
+| Game Engines          | Concurrency, SIMD                    |
+| Reactive Apps         | Actor parallelism, hot reloading     |
+| Cross-platform Dev    | Web, desktop, mobile, embedded       |
 
----
+## Project Vision
 
-## Why Oni?
+### Creator’s Mission
 
-* **Rust-level safety** with a **friendlier syntax**
-* **Ability to port Rust code to Oni**
-* **Rapid prototyping** + **production-ready compilation**
-* **Interoperable** with existing backend ecosystems
-* **Cross-platform**, concurrent, and scalable out-of-the-box
-* **Fully modular** toolchain with extensible architecture
-* **Math-ready syntax** inspired by Julia
+> "Oni is my vision for a universal language that eliminates the need to switch between specialized tools. It’s about making programming safer, more productive, and accessible—without compromises. This project is my journey to master the languages I admire and grow as a developer."
 
----
+### Design Goals
 
-## My Reasons for Starting Oni Project
+- **Cross-Platform**: Write once, deploy anywhere.
+- **Safe Systems**: Accessible safety for all levels.
+- **Domain Bridge**: Unites numerical and systems programming.
+- **Enterprise Ready**: Built-in security for professional use.
 
-i started this project in order to first Learn and master the languages i like alongside turning myself into a better Developer. i want to create something that can be a true universal programming language so instead of having a need for learning tons of languages to cover more areas you can cover 95% of them with one language. i know it's a big deal and i may fail, but i'm going to try to make a language that will make programming more accessible, safer and more productive without tradeoffs.
+### Development Status
 
-## Current Status and Contribution
+- **Phase**: Core language specification
+- **Team**: Solo until MVP
+- **Open Source**: Planned post-MVP
+- **Vision**:
+  - Safety-critical certification (e.g., aerospace, healthcare)
+  - App store integration
+  - AI-powered development assistant
 
-Right now Oni is in its early stages and until it reaches an acceptable point i will work on it alone—both for learning the topics i need to learn and to avoid wasting anyone else's time.
+## Why Choose Oni?
+
+- **Productivity**:
+  - Unified syntax across domains
+  - Rapid prototyping with metaprogramming
+  - AI-assisted coding
+- **Performance**:
+  - LLVM-optimized binaries
+  - Auto-vectorized SIMD
+  - Bare-metal efficiency
+  - Inline assembly via OASM
+- **Safety**:
+  - Compile-time bug prevention
+  - Memory validation
+  - Cryptographic supply chain
+  - Anti-tamper protections
+- **Versatility**:
+  - Scales from embedded to cloud
+  - Hardware and ML workflows
+  - Multi-platform deployment
+
+## Contribution Status
+
+Right now Oni is in its early stages and is developed solo for learning and efficiency.
+
+> **"Write once, deploy anywhere—without compromises."**
+
+**Last Updated**: May 27, 2025  
+**Status**: Active Development
+```
