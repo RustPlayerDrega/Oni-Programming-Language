@@ -154,6 +154,9 @@ Use this document to track every planned milestone.
 - [ ] Broadcasting (`fn.(args)`)  
 - [ ] Unicode operators (`∀`, `∑`)  
 - [ ] Native arrays/tensors  
+- [ ] Linear algebra primitives  
+- [ ] GPU offloading support  
+- [ ] BLAS/LAPACK integration  
 
 ---
 
@@ -168,6 +171,7 @@ Use this document to track every planned milestone.
 - [ ] Cross-platform builds  
 - [ ] Backend-specific optimizations  
 - [ ] FFI layers per backend  
+- [ ] Reverse compilation from Rust  
 
 ---
 
@@ -176,7 +180,12 @@ Use this document to track every planned milestone.
 - [ ] Interpreter  
 - [ ] Optimizing compiler  
 - [ ] Multi-backend build system  
-- [ ] Package manager (`appshard + delta`)  
+- [ ] **Package Manager**  
+  - [ ] Appshred format (appshard units)  
+  - [ ] Delta updates  
+  - [ ] Parallel downloads  
+  - [ ] Cryptographic signatures  
+  - [ ] Shard ID verification  
 - [ ] Test runner/coverage  
 - [ ] Hot code reloading  
 - [ ] **Kami VM**  
@@ -184,6 +193,7 @@ Use this document to track every planned milestone.
   - [ ] Runtime GC modes  
   - [ ] Process isolation  
   - [ ] Distributed messaging  
+  - [ ] Toggleable execution  
 
 ---
 
@@ -195,6 +205,9 @@ Use this document to track every planned milestone.
 - [ ] Security scanner  
 - [ ] REPL/debugger  
 - [ ] IDE plugins (VS Code, Neovim, JetBrains)  
+- [ ] Documentation generator  
+- [ ] Code formatter  
+- [ ] Static analyzer  
 
 ---
 
@@ -204,16 +217,18 @@ Use this document to track every planned milestone.
 - [ ] C FFI (`option Ptr<T>`)  
 - [ ] WASM exports  
 - [ ] Multi-language `.uof` files  
+- [ ] Reverse compilation from Rust  
 
 ---
 
 ## 16. Documentation & Learning
 
-- [ ] Language reference  
-- [ ] "The Oni Book" guide  
+- [ ] Formal language reference  
+- [ ] "The Oni Book" introductory guide  
 - [ ] Example repository  
 - [ ] Web playground/REPL  
 - [ ] Migration guides  
+- [ ] Tutorial series  
 
 ---
 
@@ -221,9 +236,11 @@ Use this document to track every planned milestone.
 
 - [ ] Standard library  
 - [ ] Utility crates (collections, math, I/O)  
-- [ ] Package registry  
+- [ ] Public package registry  
 - [ ] Plugin system  
-- [ ] Contribution docs  
+- [ ] Contribution guidelines  
+- [ ] Cross-compilation pipelines  
+- [ ] Ecosystem marketplace  
 
 ---
 
@@ -234,16 +251,20 @@ Use this document to track every planned milestone.
 - [ ] Embedded sandboxing  
 - [ ] Cross-compilation  
 - [ ] Binary optimization  
+- [ ] Security-hardened memory model  
+- [ ] Lightweight process isolation  
 
 ---
 
-## 19. OOP Models
+## 19. Object-Oriented Programming (OOP) Models
 
 - [ ] Structs with methods  
 - [ ] Traits/interface polymorphism  
 - [ ] Kotlin-like inheritance  
 - [ ] Lua-style prototypes  
 - [ ] Mixins/decorators  
+- [ ] Method overloading/overriding  
+- [ ] Abstract classes/members  
 
 ---
 
@@ -252,11 +273,15 @@ Use this document to track every planned milestone.
 ### `.oni` Files
 - [ ] Pure Oni code  
 - [ ] Multi-backend compilation  
+- [ ] Source maps  
+- [ ] Backend-specific directives  
 
 ### `.uof` Files
 - [ ] Multi-language support  
 - [ ] `[language=backend=filename]` syntax  
 - [ ] Section-based processing  
+- [ ] `[EndOfFile]` terminators  
+- [ ] Cross-language diagnostics  
 
 ---
 
@@ -266,15 +291,20 @@ Use this document to track every planned milestone.
 - [ ] Core language implementation  
 - [ ] Rust backend  
 - [ ] Basic toolchain  
+- [ ] Package manager (appshred prototype)  
 
 ### Milestone 2 – Extended Capabilities
 - [ ] BEAM-style concurrency  
 - [ ] Security features  
 - [ ] Multi-backend support  
+- [ ] Scientific computing stack  
+- [ ] IDE tooling  
 
 ### Milestone 3 – Production Ready
 - [ ] Certified toolchain  
 - [ ] Enterprise features  
 - [ ] Ecosystem maturity  
+- [ ] Appstore integration  
+- [ ] Safety certifications  
 
 ---
