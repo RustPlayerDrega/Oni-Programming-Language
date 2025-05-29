@@ -330,7 +330,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 ### Creator’s Mission
 
-> "Oni is my vision for a universal language that eliminates the need to switch between specialized tools. It’s about making programming safer, more productive, and accessible—without compromises. This project is my journey to master the languages I admire and grow as a developer."
+> "Oni is my vision for a universal language that eliminates the need to switch between specialized tools. It’s about making programming safer, more productive, and accessible—without compromises. This project is my journey to master the languages I admire and grow as a developer,features and technologies and plans will change until i find the best design that covers everything without over complicating the language."
 
 ### Design Goals
 
