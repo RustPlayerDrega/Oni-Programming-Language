@@ -130,27 +130,14 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Zero-cost abstractions
 - **Automatic Modes:**
   - **ARC** (Automatic Reference Counting): Used in Kotlin/Swift backends
-  - **ORC** (Optimized Reference Counting): Used in Nim backend
 - **Hybrid Support**: Mixing manual and automatic memory management
 - **Lifetime Tools**: Leak detection and analysis
 
-### Metaprogramming System
-
-- **Procedural Macros**: Rust-inspired
-- **Template Macros**: Nim-style
-- **Symbolic Macros**: Lisp-style code-as-data
-- **Hygienic Macros**: Racket-style scope control
-- **CTFE**: Compile-time function execution
-- **Reflection**: Compile-time code generation
-- **DSL Support**: Tools for domain-specific languages
-
 ### Concurrency
 
-- **Async/Await**: For asynchronous programming
-- **Goroutines & Channels**: Go-inspired concurrency
-- **Actor Model**: BEAM/OTP-inspired with supervision trees and hot reloading
+- **Async/Await/Gorutines/channels**: For asynchronous and Concurrent programming
+- **Actor Model**: BEAM/OTP-inspired with supervision trees and hot reloading and Fault-Tolerance with Pony like saftey
 - **Thread Primitives**: Threads, mutexes, condition variables, atomic operations
-- **Parallelism Models**: Fork-join, task, data, pipeline, SIMD
 - **Thread Safety**: Atomics and thread-local storage
 - **Toggleable Kami VM/Runtime**: For scalable concurrency, GC tasks, and hot code reloading
 
@@ -195,10 +182,11 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 - **Encryption**: `encrypt`
 - **Anti-Reflection**: `seal`
 - **Integrity**: `audit`
-- **Exposure**: `public` keyword (private by default)
+- **Exposure**: `public` keyword (everything is private by default unless made public)
 
 ### OASM DSL for Inline Assembly
 
+- **What It can do**: makes it possible to write oni and on compilation have inline assembly in your code without need for writing assembly
 - **Inline Blocks**: `oasm … end`
 - **Architectures**: x86_64, ARM, RISC-V
 - **Registers**: Binding and memory constraints
@@ -217,7 +205,6 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 - **Imperative Programming**
   - Standard control flow (if, while, for)
-  - Manual memory control (Rust-style)
 
 - **Functional Programming**
   - First-class functions and closures
@@ -233,7 +220,6 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 - **Procedural Programming**
   - Function-centric design
-  - Inline assembly (`oasm` blocks)
 
 - **Logic Programming**
   - Facts and rules
@@ -248,22 +234,14 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Signals, event emitters
   - Asynchronous handlers
 
-- **Actor-Based Concurrency**
-  - Supervision trees
-  - Hot reloading
-  - Isolated actors with message passing
-
-- **Concurrent & Parallel Programming**
-  - Async/await
-  - Goroutines and channels
-  - Task/data/pipeline parallelism
-  - SIMD and fork-join models
-
 - **Metaprogramming**
-  - Symbolic macros (Lisp-style)
-  - Template macros (Nim-style)
-  - Procedural macros (Rust-style)
-  - Compile-time reflection and execution (CTFE)
+  - Procedural Macros: Rust-inspired
+  - Template Macros: Nim-style
+  - CTFE: Compile-time function execution
+  - AST Macros: Nim-style
+  - CTAG: Compile-Time Assembly generation
+  - Reflection: Compile-time code generation
+  - DSL Support: Tools for domain-specific languages
 
 - **Reactive Programming**
   - Signals and behaviors
@@ -273,11 +251,6 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Logic clauses and DSL support
   - Configuration through attributes and annotations
 
-- **Low-Level Systems Programming**
-  - Manual memory with lifetimes
-  - Inline assembly (`oasm`)
-  - Direct hardware control
-
 ## Development Ecosystem
 
 ### Multi-Backend Compilation
@@ -285,11 +258,11 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 | Backend       | Use Case               | Key Strength              |
 |---------------|------------------------|---------------------------|
 | Rust          | Systems programming    | Native performance        |
-| Kotlin        | Android/cross-platform | JVM interoperability      |
-| Swift         | iOS/macOS development  | Apple ecosystem           |
-| Nim           | Web/embedded/scripting | Metaprogramming           |
+| Kotlin        | Android Developement   | JVM interoperability      |
+| Swift         | iOS/macOS Development  | Apple ecosystem           |
+| Nim           | Web/embedded/scripting | Multi-Compilation Targets |
 | WASM          | Browser-based apps     | Portable execution        |
-| Machine Code  | Bare-metal systems     | Direct hardware control   |
+| LLVM          | Bare-metal/cross-platform | Cross-platform Developement |
 
 ### Kami Toolchain
 
@@ -297,13 +270,13 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Delta updates, parallel shard downloads
   - Cryptographic signatures, shard verification
 - **Runtime Features**:
-  - Hot-reloading, toggleable BEAM-style VM
+  - Hot-reloading, toggleable BEAM-style VM/GC
   - Distributed process registry
 - **Build System**:
   - Multi-backend compilation
   - Cross-target dependency resolution
 
-### Onikage IDE Suite
+### Onikage Toolchain
 
 - **Security Scanner**: Detects vulnerabilities
 - **Ownership Visualizer**: Memory insights
@@ -339,7 +312,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 - **Domain Bridge**: Unites numerical and systems programming.
 - **Enterprise Ready**: Built-in security for professional use.
 
-### Development Status
+### Development Status/Phases
 
 - **Phase**: Core language specification
 - **Team**: Solo until MVP
@@ -348,6 +321,17 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Safety-critical certification (e.g., aerospace, healthcare)
   - App store integration
   - AI-powered development assistant
+
+-**Phase-1**:Planning.
+-**Phase-2**:Specification & Design.
+-**Phase-3**:Interpiler Design.
+-**Phase-4**:Lexer/Parser + CLI.
+-**Phase-5**:Rust/Nim Backends.
+-**Phase-6**:Kotlin Native/Swift Backends.
+-**Phase-7**:LLVM Core Backend.
+-**Phase-8**:Concurrency/Parallelism.
+-**Phase-9**:Toggleable VM & GC.
+-**Phase-10**:Kami & Onikage Toolchains.
 
 ## Why Choose Oni?
 
@@ -376,5 +360,5 @@ Right now Oni is in its early stages and is developed solo for learning and effi
 
 > **"Write once, deploy anywhere—without compromises."**
 
-**Last Updated**: May 27, 2025  
-**Status**: Active Development
+**Last Updated**: May 27, 2025
+**Status**: Active Development/Planning Phase
