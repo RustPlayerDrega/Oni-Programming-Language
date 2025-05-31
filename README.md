@@ -129,7 +129,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
   - Lifetime annotations
   - Zero-cost abstractions
 - **Automatic Modes:**
-  - **ARC & ORC**: Used Only in Nim backend
+  - **ARC & ORC**: Used Only in Nim/Swift backends
   - **Kotlin Compatible GC(KGC)**: Used Only for Kotlin/Kotlin Native backend
 - **Hybrid Support**: Mixing manual and automatic memory management
 - **Lifetime Tools**: Leak detection and analysis
