@@ -136,7 +136,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 ### Concurrency
 
-- **Orchestra Model**: new concurrency model made for flexibility with inspirations from actor model(pony/elixir/akka)/gorutines/corutines/async/await
+- **Orchestra Model**: new concurrency model made for flexibility/saftey/readability/reliability
 - **Toggleable Kami VM/Runtime**: For scalable concurrency, GC tasks, and hot code reloading
 
 ### Parallelism
