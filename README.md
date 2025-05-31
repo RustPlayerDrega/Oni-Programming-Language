@@ -49,7 +49,7 @@ Oni is driven by Five guiding principles:
 - **Versatility**
 - **Speed**
 - **Readability**
-- **1 = 1 compatibility with Rust**
+- **1 = 1 compatibility with Rust Nim & Kotlin Native**
 
 ---
 
@@ -125,11 +125,12 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 ### Memory Management
 
 - **Manual Mode**: Rust-style ownership and borrowing
-  - Ownership/borrowing semantics
+  - Only for Rust Backend
   - Lifetime annotations
   - Zero-cost abstractions
 - **Automatic Modes:**
-  - **ARC** (Automatic Reference Counting): Used in Kotlin/Swift backends
+  - **ARC & ORC**: Used Only in Nim backend
+  - **Kotlin Compatible GC(KGC)**: Used Only for Kotlin/Kotlin Native backend
 - **Hybrid Support**: Mixing manual and automatic memory management
 - **Lifetime Tools**: Leak detection and analysis
 
