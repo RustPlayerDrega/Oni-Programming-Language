@@ -136,10 +136,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 ### Concurrency
 
-- **Async/Await/Gorutines/channels**: For asynchronous and Concurrent programming
-- **Actor Model**: BEAM/OTP-inspired with supervision trees and hot reloading and Fault-Tolerance with Pony like saftey
-- **Thread Primitives**: Threads, mutexes, condition variables, atomic operations
-- **Thread Safety**: Atomics and thread-local storage
+- **Orchestra Model**: new concurrency model made for flexibility with inspirations from actor model(pony/elixir/akka)/gorutines/corutines/async/await
 - **Toggleable Kami VM/Runtime**: For scalable concurrency, GC tasks, and hot code reloading
 
 ### Parallelism
