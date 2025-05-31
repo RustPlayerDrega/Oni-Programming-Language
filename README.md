@@ -49,7 +49,6 @@ Oni is driven by Five guiding principles:
 - **Versatility**
 - **Speed**
 - **Readability**
-- **1 = 1 compatibility with Rust Nim & Kotlin Native**
 
 ---
 
@@ -82,6 +81,7 @@ Oni is driven by Five guiding principles:
 - Tamper-evident audit trails
 - Encrypted constant storage
 - Cryptographic package verification
+- Immutable and private by default unless made mutable and public
 
 ---
 
@@ -119,34 +119,44 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 - **Signed**: `i8`, `i16`, `i32`, `i64`, `i128`
 - **Unsigned**: `u8`, `u16`, `u32`, `u64`, `u128`
-- **Features**: Literal suffixes, type inference, overflow checks (debug mode), safe casting
+- **Features**: Literal suffixes, type inference(for AMT's only), overflow checks (debug mode), safe casting
 - **Auto Minimum Types**: Dynamic numeric wrappers which automatically choose the appropriate numeric type based on required memory, starting from 8 bits and scaling up to 128 bits as needed with uint int ufloat float
 
 ### Memory Management
 
-- **Manual Mode**: Rust-style ownership and borrowing
-  - Only for Rust Backend
+- **Manual Mode**: Rust ownership and borrowing
   - Lifetime annotations
   - Zero-cost abstractions
 - **Automatic Modes:**
-  - **ARC & ORC**: Used Only in Nim/Swift backends
-  - **Kotlin Compatible GC(KGC)**: Used Only for Kotlin/Kotlin Native backend
+  - **OGC**: New GC mode that does ownership and borrowing automatically
+  - **Kotlin/swift/js Compatible GC**: Used Only for Kotlin/Kotlin Native backend
 - **Hybrid Support**: Mixing manual and automatic memory management
 - **Lifetime Tools**: Leak detection and analysis
+- **Selectable Memory Management Modes**: Like nim we can select memory mode we want to use
 
 ### Concurrency
 
-- **Orchestra Model**: new concurrency model made for flexibility/saftey/readability/reliability
+- **Orchestra Model**: new concurrency model made for flexibility/saftey/readability/reliability that is mix of actor model & async/await & gorutines & CSP Channels
+- **Software Agents**: Stateful Stream Processing
 - **Toggleable Kami VM/Runtime**: For scalable concurrency, GC tasks, and hot code reloading
 
 ### Parallelism
 
-- **Data Parallelism**: Parallel operations over collections and data streams
-- **Task Parallelism**: Concurrent execution of independent tasks
-- **Pipeline Parallelism**: Staged processing with asynchronous pipelines
-- **Actor-Based Parallelism**: Isolated actors communicating via message passing
-- **Fork-Join Parallelism**: Recursive task splitting and joining
-- **SIMD Parallelism**: Vectorized computation
+- **Data Parallelism**
+- **Task Parallelism**
+- **Pipeline Parallelism**
+- **Actor-Based Parallelism**
+- **Fork-Join Parallelism**
+- **SIMD Parallelism**
+- **SIMT Parallelism**
+- **MPI-Style Messaging**
+- **Map Reduce**
+
+### Saftey & Control Models
+
+- **Refrence Capabilities**
+- **Transactional Memory**
+- **Supervisor Trees**
 
 ### Logic Programming
 
@@ -184,12 +194,11 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 ### OASM DSL for Inline Assembly
 
-- **What It can do**: makes it possible to write oni and on compilation have inline assembly in your code without need for writing assembly
+- **What It can do**: makes it possible to write oni and on compilation have inline assembly in your compiled code without need for writing assembly
 - **Inline Blocks**: `oasm … end`
 - **Architectures**: x86_64, ARM, RISC-V
 - **Registers**: Binding and memory constraints
 - **Fallback**: VM support on unsupported platforms
-- **Assembly Output**: Emits `asm!` blocks in generated Rust source
 
 ### Julia-like Math Syntax
 
@@ -255,12 +264,12 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 
 | Backend       | Use Case               | Key Strength              |
 |---------------|------------------------|---------------------------|
-| Rust          | Systems programming    | Native performance        |
-| Kotlin        | Android Developement   | JVM interoperability      |
+| LLVM          | Systems/Embedded/Bare-Metal| Native performance    |
+| Kotlin Native | Android Developement   | android UI Developement   |
 | Swift         | iOS/macOS Development  | Apple ecosystem           |
-| Nim           | Web/embedded/scripting | Multi-Compilation Targets |
+| Javascript    | Web Developement       | frontend web developement |
 | WASM          | Browser-based apps     | Portable execution        |
-| LLVM          | Bare-metal/cross-platform | Cross-platform Developement |
+| LLVM          | cross-platform         | Cross-platform Developement |
 
 ### Kami Toolchain
 
@@ -291,7 +300,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 | Mobile Development    | Kotlin/Swift backends                |
 | Scientific Computing  | GPU math, tensors, Julia syntax      |
 | Web Services          | WASM, async pipelines                |
-| Embedded Systems      | Nim backend, low footprint           |
+| Embedded Systems      | LLVM backend, low footprint           |
 | Cloud Native Apps     | Actor model, Kubernetes compatibility|
 | Game Engines          | Concurrency, SIMD                    |
 | Reactive Apps         | Actor parallelism, hot reloading     |
@@ -324,9 +333,9 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 -**Phase-2**:Specification & Design.
 -**Phase-3**:Interpiler Design.
 -**Phase-4**:Lexer/Parser + CLI.
--**Phase-5**:Rust/Nim Backends.
+-**Phase-5**:LLVM Core Backend.
 -**Phase-6**:Kotlin Native/Swift Backends.
--**Phase-7**:LLVM Core Backend.
+-**Phase-7**:WASM/JS Backends.
 -**Phase-8**:Concurrency/Parallelism.
 -**Phase-9**:Toggleable VM & GC.
 -**Phase-10**:Kami & Onikage Toolchains.
@@ -334,7 +343,7 @@ Oni provides a rich set of features tailored for a broad range of programming ta
 ## Why Choose Oni?
 
 - **Productivity**:
-  - Unified syntax across domains
+  - Unified Easy to Read syntax across domains(Nim/Python/Ruby/Vlang inspired)
   - Rapid prototyping with metaprogramming
   - AI-assisted coding
 - **Performance**:
